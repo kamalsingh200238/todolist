@@ -3,9 +3,9 @@ import { useState } from "react";
 import { Todo } from "../modals";
 
 interface Props {
-  setTodolist: React.Dispatch<React.SetStateAction<Todo[]>>;
+  setTodoList: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
-const InputTodo = ({ setTodolist }: Props) => {
+const InputTodo = ({ setTodoList }: Props) => {
   // state for input field
   const [todo, setTodo] = useState<string>("");
   const handleTodoInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,7 +14,7 @@ const InputTodo = ({ setTodolist }: Props) => {
   const handleTodoFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (todo) {
-      setTodolist((prev: Todo[]) => [
+      setTodoList((prev: Todo[]) => [
         ...prev,
         { id: Date.now(), isCompleted: false, task: todo },
       ]);
