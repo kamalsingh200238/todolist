@@ -3,7 +3,6 @@
 import { Todo } from "../modals";
 import { useEffect, useState } from "react";
 import InputTodo from "../components/InputTodo";
-import styles from "./page.module.css";
 import DisplayIncompleteTodoList from "../components/DisplayIncompleteTodoList";
 
 export default function Home() {
@@ -37,6 +36,7 @@ export default function Home() {
       <DisplayIncompleteTodoList
         todoList={todoList}
         incompleteTodoList={incompleteTodoList}
+        setTodoList={setTodoList}
       />
     </main>
   );
