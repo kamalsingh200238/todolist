@@ -13,12 +13,15 @@ const InputTodo = ({ setTodoList }: Props) => {
   };
   const handleTodoFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // add todo to todolist
     if (todo) {
       setTodoList((prev: Todo[]) => [
         ...prev,
         { id: Date.now(), isCompleted: false, task: todo },
       ]);
     }
+    // clear todo
+    setTodo("");
   };
 
   return (
