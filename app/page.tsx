@@ -4,6 +4,7 @@ import { Todo } from "../modals";
 import { useEffect, useState } from "react";
 import InputTodo from "../components/InputTodo";
 import styles from "./page.module.css";
+import DisplayIncompleteTodoList from "../components/DisplayIncompleteTodoList";
 
 export default function Home() {
   const [todoList, setTodoList] = useState<Todo[]>([]);
@@ -11,7 +12,7 @@ export default function Home() {
   const [incompleteTodoList, setIncompleteTodoList] = useState<Todo[]>([]);
 
   useEffect(() => {
-    // create new variable 
+    // create new variables
     const newCompletedTodolist: Todo[] = [];
     const newIncompletedTodolist: Todo[] = [];
 
@@ -26,14 +27,17 @@ export default function Home() {
         newIncompletedTodolist.push(singleTodo);
       }
     });
-    // then add the value in state 
+    // then add the value in state
     setCompleteTodoList(newCompletedTodolist);
     setIncompleteTodoList(newIncompletedTodolist);
   }, [todoList]);
   return (
-    <main className={styles.container}>
+    <main className="">
       <InputTodo setTodoList={setTodoList} />
+      <DisplayIncompleteTodoList
+        todoList={todoList}
+        incompleteTodoList={incompleteTodoList}
+      />
     </main>
   );
 }
-
