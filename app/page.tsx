@@ -4,6 +4,7 @@ import { Todo } from "../modals";
 import { useEffect, useState } from "react";
 import InputTodo from "../components/InputTodo";
 import DisplayIncompleteTodoList from "../components/DisplayIncompleteTodoList";
+import DisplayCompleteTodoList from "../components/DisplayCompleteTodoList";
 
 export default function Home() {
   const [todoList, setTodoList] = useState<Todo[]>([]);
@@ -33,11 +34,18 @@ export default function Home() {
   return (
     <main className="">
       <InputTodo setTodoList={setTodoList} />
-      <DisplayIncompleteTodoList
-        todoList={todoList}
-        incompleteTodoList={incompleteTodoList}
-        setTodoList={setTodoList}
-      />
+      <div className="grid grid-cols-2 gap-12">
+        <DisplayIncompleteTodoList
+          todoList={todoList}
+          incompleteTodoList={incompleteTodoList}
+          setTodoList={setTodoList}
+        />
+        <DisplayCompleteTodoList
+          todoList={todoList}
+          completeTodoList={completeTodoList}
+          setTodoList={setTodoList}
+        />
+      </div>
     </main>
   );
 }
